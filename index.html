@@ -69,8 +69,8 @@ const D={"s116e195d59": {"g": "Chantelle", "r": "Nl1YRQARe0cRRlE="}, "sd4ac5e237
 const tag=document.getElementById('tag');
 function de(s,k){const b=atob(s);let o='';for(let i=0;i<b.length;i++)o+=String.fromCharCode(b.charCodeAt(i)^k.charCodeAt(i%k.length));return decodeURIComponent(escape(o));}
 function show(tok){const e=D[tok];if(!e)return ask(true);
- tag.innerHTML=`<h2>Merry Christmas, ${e.g}! 🎅</h2><p>Ready to see who you're buying for? Make sure nobody's peeking.</p>${e.t?`<p class="tip">🏉 You lost the footy tipping comp, so bring <b>an extra $50 for Mace</b> on the day!</p>`:""}<button id="rv">Reveal my person</button>`;
- document.getElementById('rv').onclick=()=>{tag.innerHTML=`<h2>Ho ho ho, ${e.g}! You're Secret Santa for</h2><div class="who">${de(e.r,tok)}</div>${e.t?`<p class="tip">🏉 You lost the footy tipping comp, so bring <b>an extra $50 for Mace</b> on the day!</p>`:""}<p class="small">Screenshot it if you need to, and keep it to yourself!</p>`;};}
+ tag.innerHTML=`<h2>Merry Christmas, ${e.g}! 🎅</h2><p>Ready to see who you're buying for? Make sure nobody's peeking.</p>${e.t?`<p class="tip">🏉 You lost the footy tipping comp, so you also owe Mace <b>a $50 gift</b>!</p>`:""}<button id="rv">Reveal my person</button>`;
+ document.getElementById('rv').onclick=()=>{tag.innerHTML=`<h2>Ho ho ho, ${e.g}! You're Secret Santa for</h2><div class="who">${de(e.r,tok)}</div>${e.t?`<p class="tip">🏉 You lost the footy tipping comp, so you also owe Mace <b>a $50 gift</b>!</p>`:""}<p class="small">Screenshot it if you need to, and keep it to yourself!</p>`;};}
 function ask(bad){tag.innerHTML=`<h2>Find your person</h2><p class="small">${bad?"That code didn't match. Check the link Nick sent you.":"Open the private link Nick sent you, or paste your code below."}</p><form id="f"><input id="code" placeholder="e.g. s1a2b3c4d5" autocomplete="off"><button>Open</button></form>`;
  document.getElementById('f').onsubmit=ev=>{ev.preventDefault();show(document.getElementById('code').value.trim().replace(/^#/,''));};}
 const hs=location.hash.slice(1);hs?show(hs):ask(false);
